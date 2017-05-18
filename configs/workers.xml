@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<WorkerConfigs classpath="rfx.core.configs.WorkerConfigs" type="object" >
+	
+	<!-- the shell-script for start workers -->
+	<startWorkerScriptPath>		
+		./start-worker.sh
+	</startWorkerScriptPath>
+		
+	<!-- where the debug/info/error logs store -->
+	<debugLogPath>/home/hungnt/data/logs</debugLogPath>
+	
+	<!-- the allocated port for workers -->	
+	<allocatedWorkers type="list" ></allocatedWorkers>
+		
+	<!-- the custom configs for workers -->
+	<customConfigs type="map" >	
+	</customConfigs>
+		
+</WorkerConfigs>
