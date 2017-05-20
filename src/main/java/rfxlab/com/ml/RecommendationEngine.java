@@ -36,10 +36,10 @@ public class RecommendationEngine {
 		JavaSparkContext sc = new JavaSparkContext(conf);
 
 		// Read user-item rating file. format - userId,itemId,rating
-		JavaRDD<String> userItemRatingsFile = sc.textFile("/home/hungnt/data/ml-latest-small/ratings.csv");
+		JavaRDD<String> userItemRatingsFile = sc.textFile("data/ratings.csv");
 		
 		// Read item description file. format - itemId, itemName, Other Fields,..
-		JavaRDD<String> itemDescritpionFile = sc.textFile("/home/hungnt/data/ml-latest-small/movies.csv");
+		JavaRDD<String> itemDescritpionFile = sc.textFile("data/movies.csv");
 		
 		// Map file to Ratings(user,item,rating) tuples
 		JavaRDD<Rating> ratings = userItemRatingsFile.map(new Function<String, Rating>() {
@@ -66,7 +66,7 @@ public class RecommendationEngine {
 		int rank = 10; // 10 latent factors
 		int numIterations = 10; // FIXME number of iterations
 		
-		MatrixFactorizationModel model = ALS.trainImplicit(JavaRDD.toRDD(ratings),rank, numIterations);
+		MatrixFactorizationModel model = ALS.train(JavaRDD.toRDD(ratings),rank, numIterations);
 		//ALS.trainImplicit(arg0, arg1, arg2)
 
 		// Create user-item tuples from ratings
@@ -95,14 +95,22 @@ public class RecommendationEngine {
 		});
 		
 		// Create user-item tuples for the items that are not rated by user, with user id 1
+		int userId = 1;
 		JavaRDD<Tuple2<Object, Object>> itemsNotRatedByUser = notRatedByUser
 				.map(new Function<Integer, Tuple2<Object, Object>>() {
 					public Tuple2<Object, Object> call(Integer r) {
 						System.out.println("itemsNotRatedByUser "+r);
-						return new Tuple2<Object, Object>(0, r);
+						return new Tuple2<Object, Object>(userId, r);
 					}
 		});
 		System.out.println("itemsNotRatedByUser "+itemsNotRatedByUser.count());
+		
+		itemsNotRatedByUser.foreach(new VoidFunction<Tuple2<Object, Object>>() {
+			@Override
+			public void call(Tuple2<Object, Object> t) throws Exception {
+				System.out.println(t._1 + "\t" + t._2);
+			}
+		});
 		
 		// Predict the ratings of the items not rated by user for the user
 		JavaRDD<Rating> recomondations = model.predict(itemsNotRatedByUser.rdd()).toJavaRDD().distinct();
