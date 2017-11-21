@@ -5,8 +5,6 @@ import rfx.core.stream.functor.StreamProcessor;
 import rfx.core.stream.message.Tuple;
 import rfx.core.stream.model.DataFlowInfo;
 import rfx.core.stream.topology.BaseTopology;
-import rfx.core.stream.util.HashUtil;
-import rfx.core.util.StringUtil;
 import rfxlab.com.demo.utils.BatchLogWriter;
 
 public class ProcessingPlayViewLog extends StreamProcessor {

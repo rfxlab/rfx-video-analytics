@@ -3,12 +3,12 @@ package rfxlab.com.demo.utils;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
-import rfx.core.stream.util.ua.Client;
-import rfx.core.stream.util.ua.Parser;
-
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
+
+import rfx.core.util.useragent.Client;
+import rfx.core.util.useragent.Parser;
 
 public class DeviceParserUtil {
 
