@@ -8,7 +8,6 @@ import server.http.util.KafkaLogHandlerUtil;
 
 public class VideoHttpLogTrackingHandler implements BaseHttpHandler {
 	
-
 	private static final String PONG = "PONG";
 	private static final String FAVICON_ICO = "favicon.ico";
 	private static final String PING = "ping";

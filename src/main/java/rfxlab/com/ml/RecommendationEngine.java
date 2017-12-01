@@ -20,6 +20,8 @@ import rfx.core.util.Utils;
 import scala.Tuple2;
 
 public class RecommendationEngine {
+	private static final String APP_NAME = "RecommendationEngine Collaborative Filtering Example";
+
 	static {
 		PropertyConfigurator.configure("configs/log4j2.properties");
 	}
@@ -31,8 +33,7 @@ public class RecommendationEngine {
 		Logger.getLogger("akka").setLevel(Level.OFF);
 
 		// Create Java spark context
-		SparkConf conf = new SparkConf().setMaster("local").set("spark.executor.memory", "1g")
-				.setAppName("Collaborative Filtering Example");
+		SparkConf conf = new SparkConf().setMaster("local").set("spark.executor.memory", "1g").setAppName(APP_NAME);
 		JavaSparkContext sc = new JavaSparkContext(conf);
 
 		// Read user-item rating file. format - userId,itemId,rating
@@ -65,7 +66,6 @@ public class RecommendationEngine {
 				});
 
 		// Build the recommendation model using ALS
-
 		int rank = 10; // 10 latent factors
 		int numIterations = 10; // FIXME number of iterations
 
@@ -79,8 +79,7 @@ public class RecommendationEngine {
 			}
 		});
 
-		// Calculate the itemIds not rated by a particular user, say user with userId =
-		// 1
+		// Calculate the itemIds not rated by a particular user, say user with userId =  1
 		JavaRDD<Integer> notRatedByUser = userProducts.filter(new Function<Tuple2<Object, Object>, Boolean>() {
 			@Override
 			public Boolean call(Tuple2<Object, Object> v1) throws Exception {

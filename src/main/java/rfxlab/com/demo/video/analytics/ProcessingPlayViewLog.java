@@ -19,15 +19,14 @@ public class ProcessingPlayViewLog extends StreamProcessor {
 
 	@Override
 	public void onReceive(Tuple inTuple) throws Exception {
-		LogData ld = (LogData) inTuple.getValueByField(ParsingPlayViewLog.LOG_DATA);
-
-		rawLogWriter.writeString(ld.getLoggedTime(), ld.getPartitionId(), ld.toRawLogRecord());
+		LogData ld = (LogData) inTuple.getValueByField(ParsingPlayViewLog.LOG_DATA);		
 		processPlayViewData(ld);		
 	}
 
 	public static void processPlayViewData(LogData ld) {
-		String url = ld.getUrl();
-		int placementId = ld.getPlacement();
+		rawLogWriter.writeString(ld.getLoggedTime(), ld.getPartitionId(), ld.toRawLogRecord());
+//		String url = ld.getUrl();
+//		int placementId = ld.getPlacement();
 		// TODO
 
 	}

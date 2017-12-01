@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<KafkaConfig classpath="rfx.core.stream.configs.KafkaTopologyConfig" type="list" >
+
+	
+	
+	<topic name="playview" topology="rfxlab.com.demo.video.analytics.VideoPlayViewTopology">
+		<brokers>localhost:9092</brokers>
+	</topic>
+     
+</KafkaConfig>
+
