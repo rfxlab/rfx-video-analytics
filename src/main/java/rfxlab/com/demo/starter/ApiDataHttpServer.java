@@ -1,6 +1,6 @@
 package rfxlab.com.demo.starter;
 
-public class VideoRestApiHttpServer {
+public class ApiDataHttpServer {
 
 	public static void main(String[] args) {
 		

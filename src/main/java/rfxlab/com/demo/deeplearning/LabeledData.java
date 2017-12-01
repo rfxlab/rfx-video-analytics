@@ -21,6 +21,4 @@ public class LabeledData {
 	public void setProbabilities(float probabilities) {
 		this.probabilities = probabilities;
 	}
-	
-	
 }

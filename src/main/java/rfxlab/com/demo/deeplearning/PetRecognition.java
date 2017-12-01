@@ -8,20 +8,30 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 
-import org.tensorflow.DataType;
 import org.tensorflow.Graph;
-import org.tensorflow.Output;
 import org.tensorflow.Session;
 import org.tensorflow.Tensor;
 
 // Download the pre-trained inception model from here: https://storage.googleapis.com/download.tensorflow.org/models/inception_dec_2015.zip
 public class PetRecognition {
 
-	private String modelpath;
-	private String imagepath;	
+	private String modelPath;
+	private String imagePath;	
 	private byte[] graphDef;
-	private List<String> labels;
+	private List<String> labels;	
 		
+
+	public String getModelPath() {
+		return modelPath;
+	}
+
+	public String getImagePath() {
+		return imagePath;
+	}
+
+	public List<String> getLabels() {
+		return labels;
+	}
 
 	private static float[] executeInceptionGraph(byte[] graphDef, Tensor image) {
 		try (Graph g = new Graph()) {
@@ -72,11 +82,8 @@ public class PetRecognition {
 
 	public PetRecognition(String modelpath) {
 		graphDef = readAllBytesOrExit(Paths.get(modelpath, "tensorflow_inception_graph.pb"));
-        labels = readAllLinesOrExit(Paths.get(modelpath, "imagenet_comp_graph_label_strings.txt"));
-		
-	}
-	
-	
+        labels = readAllLinesOrExit(Paths.get(modelpath, "imagenet_comp_graph_label_strings.txt"));		
+	}	
 
 	public LabeledData detect(String imagepath) {
         byte[] imageBytes = readAllBytesOrExit(Paths.get(imagepath));

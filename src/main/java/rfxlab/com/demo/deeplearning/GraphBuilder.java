@@ -6,6 +6,8 @@ import org.tensorflow.Output;
 import org.tensorflow.Tensor;
 
 public class GraphBuilder {
+	private Graph g;
+	
 	GraphBuilder(Graph g) {
 		this.g = g;
 	}
@@ -45,5 +47,5 @@ public class GraphBuilder {
 		return g.opBuilder(type, type).addInput(in1).addInput(in2).build().output(0);
 	}
 
-	private Graph g;
+	
 }
