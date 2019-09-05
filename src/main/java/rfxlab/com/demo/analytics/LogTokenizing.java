@@ -1,4 +1,4 @@
-package rfxlab.com.demo.video.analytics;
+package rfxlab.com.demo.analytics;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 

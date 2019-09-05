@@ -1,4 +1,4 @@
-package rfxlab.com.demo.video.analytics;
+package rfxlab.com.demo.analytics;
 
 import rfx.core.util.CharPool;
 import rfx.core.util.StringPool;

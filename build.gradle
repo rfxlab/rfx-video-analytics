@@ -16,7 +16,6 @@ repositories {
 }
 
 dependencies {
-	compile group: 'org.tensorflow', name: 'tensorflow', version: '1.1.0'
     compile(            
              'io.vertx:vertx-core:3.4.2'			
 			,'com.google.code.gson:gson:2.8.2'    		

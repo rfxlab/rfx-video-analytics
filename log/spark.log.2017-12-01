@@ -1,0 +1,4 @@
+[WARN] 2017-12-01 09:19:18,588 com.github.fommil.netlib.BLAS <clinit> - Failed to load implementation from: com.github.fommil.netlib.NativeSystemBLAS
+[WARN] 2017-12-01 09:19:18,596 com.github.fommil.netlib.BLAS <clinit> - Failed to load implementation from: com.github.fommil.netlib.NativeRefBLAS
+[WARN] 2017-12-01 09:19:18,678 com.github.fommil.netlib.LAPACK <clinit> - Failed to load implementation from: com.github.fommil.netlib.NativeSystemLAPACK
+[WARN] 2017-12-01 09:19:18,678 com.github.fommil.netlib.LAPACK <clinit> - Failed to load implementation from: com.github.fommil.netlib.NativeRefLAPACK
