@@ -38,7 +38,7 @@ public class RecommendationEngine {
 	JavaRDD<String> userItemRatingsFile = sc.textFile("data/ratings.csv");
 
 	// Read item description file. format - itemId, itemName, Other Fields,..
-	JavaRDD<String> itemDescritpionFile = sc.textFile("data/movies.csv");
+	JavaRDD<String> itemDescritpionFile = sc.textFile("data/news.csv");
 
 	// Map file to Ratings(user,item,rating) tuples
 	JavaRDD<Rating> ratings = userItemRatingsFile.map(new Function<String, Rating>() {
